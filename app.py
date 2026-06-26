@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from tools.schema_tools import get_schema
+from tools.pandas_tools import get_basic_statistics
 
 
 
@@ -46,6 +47,13 @@ if uploaded_file is not None:
     st.dataframe(dtype_df)
 
     schema = get_schema(df)
+    stats = get_basic_statistics(df)
+
+    st.subheader("Basic Statistics")
+    st.json(stats)
+    
 
     st.subheader("Schema Information")
     st.json(schema)
+
+    
